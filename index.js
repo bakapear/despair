@@ -73,7 +73,7 @@ Despair.prototype.wait = ms => new Promise(resolve => setTimeout(resolve, ms))
 Despair.prototype.format = (str, ...args) => str.replace(/{(\d+)}/g, (m, n) => typeof args[n] !== 'undefined' ? args[n] : m)
 
 /**
- * Formats a string using color flags
+ * Formats a string using color flags.
  *
  * da = dark | RE = red BG | bg = bright green
  *
@@ -91,7 +91,7 @@ Despair.prototype.color = (flags, str) => {
 }
 
 /**
- * Checks if a given string is an URL
+ * Checks if a given string is an URL.
  */
 Despair.prototype.isURL = (str, lazy) => {
   let regex = lazy
@@ -101,3 +101,8 @@ Despair.prototype.isURL = (str, lazy) => {
   if (match) return true
   else return false
 }
+
+/**
+ * Escapes RegExp in string.
+ */
+Despair.prototype.escapeRegex = str => str.replace(/[\\^$*+?.()|[\]{}]/g, '\\$&')
