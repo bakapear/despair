@@ -1,3 +1,6 @@
+let got = require('got')
+let fs = require('fs')
+
 function Despair () { }
 module.exports = new Despair()
 
@@ -106,3 +109,42 @@ Despair.prototype.isURL = (str, lazy) => {
  * Escapes RegExp in string.
  */
 Despair.prototype.escapeRegex = str => str.replace(/[\\^$*+?.()|[\]{}]/g, '\\$&')
+
+/**
+ * Syncronously writes data to a file, replacing the file if it already exists or creates a directory.
+ */
+Despair.prototype.write = (path, data, options) => {
+  return fs.writeFileSync(path, data, options)
+}
+
+/**
+ * Syncronously reads the entire contents of a file or gets files in a directory.
+ */
+Despair.prototype.read = (path, options) => {
+  if (this.stat(path).isDirectory()) {
+    return fs.readFileSync(path, options)
+  } else {
+    return fs.readdirSync(path, options)
+  }
+}
+
+/**
+ * Syncronously tests whether or not the given path exists by checking with the file system.
+ */
+Despair.prototype.exists = path => {
+  return fs.existsSync(path)
+}
+
+/**
+ * Gets a file status. Does not reference symbolic links.
+ */
+Despair.prototype.stat = path => {
+  return fs.lstatSync(path)
+}
+
+/**
+ * Request http or https with extended options.
+ */
+Despair.prototype.fetch = (url, options) => {
+  return got(url, options)
+}
