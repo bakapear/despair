@@ -1,6 +1,6 @@
 {
   "name": "despair",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "An eternal cinema of functions I use",
   "main": "lib/despair.js",
   "scripts": {
