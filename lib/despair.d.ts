@@ -20,3 +20,6 @@ export function rnd(min: number, max: number): number
 export function encode(str: string, type: string): string
 export function decode(str: string, type: string): string
 export function test(fn: Function | any, any: any, full?: boolean): boolean
+export function log(...any: any): void
+export function err(...any: any): void
+export function die(fn: Function, type: any): any
