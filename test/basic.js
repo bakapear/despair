@@ -31,6 +31,11 @@ dp.test(
 )
 
 dp.test(
+  dp.unescapeRegex('What§\\*\\+34\\)\\(F4\\+'),
+  'What§*+34)(F4+'
+)
+
+dp.test(
   dp.encode('The ability to think, the ability to continue thinking.', 'base64'),
   'VGhlIGFiaWxpdHkgdG8gdGhpbmssIHRoZSBhYmlsaXR5IHRvIGNvbnRpbnVlIHRoaW5raW5nLg=='
 )

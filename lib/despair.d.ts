@@ -1,14 +1,15 @@
 import { MakeDirectoryOptions } from "fs";
 
-export function distinct(array: any[]): any[]
-export function hms(milliseconds: number): string
-export function match(array: Object[], property: PropertyKey, query: string): Object[]
+export function distinct(arr: any[]): any[]
+export function hms(ms: number): string
+export function match(arr: Object[], prop: PropertyKey, query: string): Object[]
 export function shuffle(array: any[]): any[]
-export function wait(milliseconds: number): Promise<void>
-export function format(string: string, ...arguments: any): string
+export function wait(ms: number): Promise<void>
+export function format(str: string, ...args: any): string
 export function color(str: string): string
-export function isURL(string: string, lazy: boolean): boolean
-export function escapeRegex(string: string): string
+export function isURL(str: string, lazy: boolean): boolean
+export function escapeRegex(str: string): string
+export function unescapeRegex(str: string): string
 export function write(path: PathLike, data: any, options?: WriteFileOptions | MakeDirectoryOptions): void
 export function read(path: PathLike, options?: { encoding?: null; flag?: string }): Buffer | string[]
 export function exists(path: PathLike): boolean
