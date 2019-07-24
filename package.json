@@ -2,9 +2,10 @@
   "name": "despair",
   "version": "1.2.0",
   "description": "An eternal cinema of functions I use",
-  "main": "index.js",
+  "main": "lib/despair.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/basic.js",
+    "start": "node lib/despair.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/bakapear/despair/issues"
   },
-  "homepage": "https://github.com/bakapear/despair#readme"
+  "homepage": "https://github.com/bakapear/despair#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "got": "^9.6.0"
+  }
 }
