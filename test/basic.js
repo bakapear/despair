@@ -49,3 +49,18 @@ dp.test(
   dp.decode('&lt;html&gt;stuff&lt;/html&gt;', 'html'),
   '<html>stuff</html>'
 )
+
+dp.test(
+  dp.flat([1, 2, 3, [4, 5, 6], 7, [8, [9, 10]]]),
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+)
+
+dp.test(
+  dp.flat([1, 2, 3, [4, 5, 6], 7, [8, [9, 10]]], 1),
+  [1, 2, 3, 4, 5, 6, 7, 8, [9, 10]]
+)
+
+dp.test(
+  dp.hash('This viewing angle is kinda lit!', 'md5'),
+  '31f7228fda9ecb91a9637b6284a01d02'
+)
