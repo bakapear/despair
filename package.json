@@ -1,11 +1,10 @@
 {
   "name": "despair",
   "version": "1.3.1",
-  "description": "An eternal cinema of functions I use",
-  "main": "lib/despair.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "node test/basic.js",
-    "start": "node lib/despair.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +16,5 @@
     "url": "https://github.com/bakapear/despair/issues"
   },
   "homepage": "https://github.com/bakapear/despair#readme",
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "got": "^9.6.0"
-  }
+  "dependencies": {}
 }
