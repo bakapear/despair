@@ -16,6 +16,9 @@ function Despair (url = '', opts = {}) {
       if (res.statusCode >= 400) reject(new HTTPError(res.statusCode))
       if (res.statusCode >= 300 && res.statusCode < 400) {
         if (opts.redirects-- > 0 || opts.redirects === -1) {
+          if (res.statusCode === 303 && opts.method !== 'GET' && opts.method !== 'HEAD') opts.method = 'GET'
+          delete opts.query
+          delete opts.base
           resolve(Despair(res.headers.location, opts))
           return res.destroy()
         }
