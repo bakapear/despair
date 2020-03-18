@@ -11,9 +11,10 @@ function Despair (url = '', opts = {}) {
   if (opts.type) opts.headers['Content-Type'] = types[opts.type]
   url = new URL(url, opts.base)
   if (opts.query) url.search = new URLSearchParams(opts.query)
+  let error = false
   let out = new Promise((resolve, reject) => {
     let req = m[url.protocol].request(url, opts, (res, data = '') => {
-      if (res.statusCode >= 400) reject(new HTTPError(res.statusCode))
+      if (res.statusCode >= 400) error = true
       if (res.statusCode >= 300 && res.statusCode < 400) {
         if (opts.redirects-- > 0 || opts.redirects === -1) {
           if (res.statusCode === 303 && opts.method !== 'GET' && opts.method !== 'HEAD') opts.method = 'GET'
@@ -27,7 +28,8 @@ function Despair (url = '', opts = {}) {
       res.on('data', chunk => { data += chunk })
       res.on('end', () => {
         res.body = data
-        resolve(res)
+        if (error) reject(new HTTPError(res))
+        else resolve(res)
       })
     })
     req.on('error', e => reject(e))
@@ -53,10 +55,12 @@ Despair.options = (url, opts) => Despair(url, { ...opts, method: 'OPTIONS' })
 Despair.connect = (url, opts) => Despair(url, { ...opts, method: 'CONNECT' })
 
 class HTTPError extends Error {
-  constructor (msg) {
-    super('Response code ' + msg)
+  constructor (res) {
+    super(res.statusMessage)
     this.name = this.constructor.name
-    this.status = msg
+    this.code = res.statusCode
+    this.message = res.statusMessage
+    this.body = res.body
   }
 }
 
