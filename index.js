@@ -4,7 +4,12 @@ let types = {
   form: 'application/x-www-form-urlencoded'
 }
 
-function Despair (url = '', opts = {}) {
+/**
+  The function of make request
+  @param {String} url - URL of the request
+  @param {Object} opts - Options of the request
+*/
+function Despair(url = '', opts = {}) {
   if (!opts.method) opts.method = 'GET'
   if (!opts.headers) opts.headers = {}
   if (!opts.redirects) opts.redirects = 5
@@ -44,14 +49,59 @@ function Despair (url = '', opts = {}) {
   return out
 }
 
+/**
+  The function of make GET request
+  @param {String} url - URL of the request
+  @param {Object} opts - Options of the request
+*/
 Despair.get = (url, opts) => Despair(url, { ...opts, method: 'GET' })
+/**
+  The function of make PUT request
+  @param {String} url - URL of the request
+  @param {Object} opts - Options of the request
+*/
 Despair.put = (url, opts) => Despair(url, { ...opts, method: 'PUT' })
+/**
+  The function of make POST request
+  @param {String} url - URL of the request
+  @param {Object} opts - Options of the request
+*/
 Despair.post = (url, opts) => Despair(url, { ...opts, method: 'POST' })
+/**
+  The function of make GET request
+  @param {String} url - URL of the request
+  @param {Object} opts - Options of the request
+*/
 Despair.head = (url, opts) => Despair(url, { ...opts, method: 'HEAD' })
+/**
+  The function of make PATCH request
+  @param {String} url - URL of the request
+  @param {Object} opts - Options of the request
+*/
 Despair.patch = (url, opts) => Despair(url, { ...opts, method: 'PATCH' })
+/**
+  The function of make TRACE request
+  @param {String} url - URL of the request
+  @param {Object} opts - Options of the request
+*/
 Despair.trace = (url, opts) => Despair(url, { ...opts, method: 'TRACE' })
+/**
+  The function of make DELETE request
+  @param {String} url - URL of the request
+  @param {Object} opts - Options of the request
+*/
 Despair.delete = (url, opts) => Despair(url, { ...opts, method: 'DELETE' })
+/**
+  The function of make OPTIONS request
+  @param {String} url - URL of the request
+  @param {Object} opts - Options of the request
+*/
 Despair.options = (url, opts) => Despair(url, { ...opts, method: 'OPTIONS' })
+/**
+  The function of make CONNECT request
+  @param {String} url - URL of the request
+  @param {Object} opts - Options of the request
+*/
 Despair.connect = (url, opts) => Despair(url, { ...opts, method: 'CONNECT' })
 
 class HTTPError extends Error {
