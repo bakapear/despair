@@ -19,7 +19,8 @@ function Despair (url = '', opts = {}) {
         if (opts.redirects-- > 0 || opts.redirects === -1) {
           if (res.statusCode === 303 && opts.method !== 'GET' && opts.method !== 'HEAD') opts.method = 'GET'
           delete opts.query
-          delete opts.base
+          if (res.headers.location[0] !== '/') delete opts.base
+          else opts.base = url.origin
           resolve(Despair(res.headers.location, opts))
           return res.destroy()
         }
