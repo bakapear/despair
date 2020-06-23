@@ -13,7 +13,8 @@ function Despair (url = '', opts = {}) {
   if (opts.query) url.search = new URLSearchParams(opts.query)
   let error = false
   let out = new Promise((resolve, reject) => {
-    let req = m[url.protocol].request(url, opts, (res, data = '') => {
+    opts = { ...opts, host: url.host, path: url.pathname + url.search }
+    let req = m[url.protocol].request(opts, (res, data = '') => {
       if (res.statusCode >= 400) error = true
       if (res.statusCode >= 300 && res.statusCode < 400) {
         if (opts.redirects-- > 0 || opts.redirects === -1) {
